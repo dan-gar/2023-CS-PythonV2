@@ -78,6 +78,7 @@ class TestPerson:
         import datetime  # noqa: F401
 
         assert eval(repr(polina))  # noqa: S307
+        
 
 
 class TestStudent:
