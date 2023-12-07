@@ -3,28 +3,37 @@ from typing import List, Optional, Union
 
 
 def prefix_evaluate(prefix_evaluation: List[str]) -> int:
+    if prefix_evaluation=="":
+        return None
+
+    
     stack = []
     operators = set(['+', '-', '*', '/'])
 
-    for i in reversed(range(len(prefix_evaluation))):
-        if prefix_evaluation[i] in operators:
+    # reverse the list
+    prefix_evaluation = prefix_evaluation[::-1]
+
+    for i in prefix_evaluation:
+        if i not in operators and i != ' ':
+            stack.append(int(i))
+        elif i != ' ':
             a = stack.pop()
             b = stack.pop()
-            if prefix_evaluation[i] == '+':
-                stack.append(a + b)
-            elif prefix_evaluation[i] == '-':
-                stack.append(a - b)
-            elif prefix_evaluation[i] == '*':
-                stack.append(a * b)
-            elif prefix_evaluation[i] == '/':
-                stack.append(int(a / b))
-        elif prefix_evaluation[i].strip():  # Skip spaces
-            stack.append(int(prefix_evaluation[i]))
+            if i == '+':
+                res = a + b
+            elif i == '-':
+                res = a - b
+            elif i == '*':
+                res = a * b
+            else:
+                res = a / b  # division
+            stack.append(res)
 
     return stack[0]
 
-
 def to_prefix(equation: str) -> List[str]:
+    if equation=="" or equation==None:
+        return None
     stack = []
     output = []
     operators = set(['+', '-', '*', '/', '(', ')'])
@@ -50,7 +59,14 @@ def to_prefix(equation: str) -> List[str]:
     while stack:
         output.append(stack.pop())
 
-    return output[::-1]
+    lst=output[::-1]
+
+    ret=''
+    for i in lst:
+        ret=ret+i+' '
+    
+
+    return ret[:-1]
 
 def calculate(equation: str) -> int:
     return prefix_evaluate(to_prefix(equation))
