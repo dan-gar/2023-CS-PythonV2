@@ -18,13 +18,13 @@ $ python3 ocean.py < input.txt
 ```
 or 
 ```
-1          # n_quants
-5 5        # ocean size
-0 2 0 1 3  # initial ocean state
-0 2 0 3 3  # 0 - empty cell (water)
-0 2 2 2 1  # 1 - rock
-2 1 2 0 3  # 2 - fish
-3 3 1 3 3  # 3 - shrimp
+1          
+5 5        
+0 2 0 1 3  
+0 2 0 3 3  
+0 2 2 2 1  
+2 1 2 0 3  
+3 3 1 3 3  
 
 ```
 
