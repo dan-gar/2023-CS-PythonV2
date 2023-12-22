@@ -4,6 +4,7 @@ from ocean import Ocean
 def test_ocean_init():
     a=Ocean([[2]])
     assert type(a)==Ocean
+    assert a.state==[[2]]
 
 
 def test_ocean_repr():
